@@ -48,7 +48,7 @@ Written by: Matthew Dave Desabelle
           1) Open Hashing (or External hashing)
           2) Close Hashing (or Internal hashin)
      ```
-## Pre-Finals
+## Pre-Finals Topics
 1) ADT Tree
      ```
      a) Tree Traversals [Preorder, Inorder, Postorder]
@@ -77,7 +77,7 @@ Written by: Matthew Dave Desabelle
           > Version 2: Heapify starting with lowest level parent
      ```
 4) Heapsort Sorting Technique (in place)
-## Finals
+## Finals Topics
 1) Directed and Undirected Graph
      ```
      a) Concepts

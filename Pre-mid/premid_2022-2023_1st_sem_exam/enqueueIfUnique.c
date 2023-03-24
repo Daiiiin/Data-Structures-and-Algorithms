@@ -1,5 +1,5 @@
 /*
-	A varuant of the circular queue records the position of the front element and the
+	A variant of the circular queue records the position of the front element and the
 	length of the array (or number of elements) where length is less than or equal to
 	the size of the array. Given below is the definition of the queue.
 
@@ -139,43 +139,3 @@ int main(){
 	
 	return 0;
 }
-
-/*
-	Note: if check = 0, then data is unique, otherwise, 
-			if check = 1, then data already exists
-	1. Check if queue is full
-	2. If queue is not full
-	3. Loop (while front != end)
-		3.1. check if front == data
-		3.2. if front == data
-			3.2.1.	check = 1;
-		3.3. increment rear(length)
-		3.4. move front data to rear(length)
-		3.5. increment front
-	End loop.
-		3.4. if check != 1
-			3.4.1. increment rear(length)
-			3.4.2. enqueue data
-	4. If queue is full
-		4.1. print "queue is full"
-	
-	int check = 0;	
-	if((q->length + 2) % SIZE != q->front){
-		while(q->front != end){
-			if(q->elem[q->front] == data){
-				check = 1;
-			}
-			q->length = (q->length + 1) % SIZE;
-			q->elem[q->length] = q->elem[q->front];
-			q->front = (q->front + 1) % SIZE;
-		}
-		if(check != 1){
-			q->length = (q->length + 1) % SIZE;
-			q->elem[q->length] = data;
-		}else{
-			printf("Data already exist: %c\n", data);
-		}
-	}else{
-		printf("Cannot enqueue %c, queue is full.\n", data);
-	}
-*/

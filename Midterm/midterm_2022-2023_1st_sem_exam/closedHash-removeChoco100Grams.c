@@ -25,7 +25,7 @@ typedef struct node{
 
 typedef struct{
 	prodPtr Header[OSIZE];
-	int count; // hold the number of elements
+	int count; // holds the number of elements
 }OpenHash; // Open hashing
 
 typedef struct{

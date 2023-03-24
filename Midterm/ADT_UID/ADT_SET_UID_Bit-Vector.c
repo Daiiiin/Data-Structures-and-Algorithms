@@ -5,6 +5,11 @@
 typedef int SET[MAX];
 
 /*
+	A[i] || B[i] is the same as A[i] == 1 || B[i] == 1
+	A[i] && B[i] is the same as A[i] == 1 && B[i] == 1
+	This will work since the elements are just 1's and 0's.
+	Will not work otherwise.
+	
 	1 = TRUE, 0 = FALSE
 	The elements of the SET are represented by 1 in the array.
 	EXAMPLE.
@@ -26,7 +31,7 @@ SET *Union(SET A, SET B){
 	initSet(*retVal);
 	if(retVal != NULL){
 		for(i = 0; i < MAX; i++){
-			(*retVal)[i] = A[i] | B[i];
+			(*retVal)[i] = A[i] || B[i];
 		}
 	}
 	return retVal;
@@ -39,7 +44,7 @@ SET *Intersection(SET A, SET B){
 	initSet(*retVal);
 	if(retVal != NULL){
 		for(i = 0; i < MAX; i++){
-			(*retVal)[i] = A[i] & B[i];
+			(*retVal)[i] = A[i] && B[i];
 		}
 	}
 	return retVal;
@@ -52,7 +57,7 @@ SET *Difference(SET A, SET B){
 	initSet(*retVal);
 	if(retVal != NULL){
 		for(i = 0; i < MAX; i++){
-			(*retVal)[i] = A[i] & ~B[i];
+			(*retVal)[i] = (A[i] == 1 && B[i] == 0)? 1 : 0;
 		}
 	}
 	return retVal;
@@ -117,7 +122,7 @@ int main(){
 	displaySet(*C);
 	printf("\nIntersection of SET A and B:\n");
 	displaySet(*D);
-	printf("\nDifference of SET A and B:\n");
+	printf("\nDifference of SET A - B:\n");
 	displaySet(*E);
 	
 	return 0;

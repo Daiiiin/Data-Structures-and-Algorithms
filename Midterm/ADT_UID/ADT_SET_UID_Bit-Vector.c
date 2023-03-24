@@ -12,10 +12,18 @@ typedef int SET[MAX];
 	SET A = {0,1,1,0,1,0,0,1}, this means that the elements of SET A are 1,2,4,7
 */
 
+void initSet(SET s){
+	int i;
+	for(i = 0; i < MAX; i++){
+		s[i] = 0;
+	}
+}
+
 SET *Union(SET A, SET B){
 	SET *retVal;
 	int i;
 	retVal = (SET*)malloc(sizeof(SET));
+	initSet(*retVal);
 	if(retVal != NULL){
 		for(i = 0; i < MAX; i++){
 			(*retVal)[i] = A[i] | B[i];
@@ -28,6 +36,7 @@ SET *Intersection(SET A, SET B){
 	SET *retVal;
 	int i;
 	retVal = (SET*)malloc(sizeof(SET));
+	initSet(*retVal);
 	if(retVal != NULL){
 		for(i = 0; i < MAX; i++){
 			(*retVal)[i] = A[i] & B[i];
@@ -40,6 +49,7 @@ SET *Difference(SET A, SET B){
 	SET *retVal;
 	int i;
 	retVal = (SET*)malloc(sizeof(SET));
+	initSet(*retVal);
 	if(retVal != NULL){
 		for(i = 0; i < MAX; i++){
 			(*retVal)[i] = A[i] & ~B[i];
@@ -51,17 +61,52 @@ SET *Difference(SET A, SET B){
 void displaySet(SET A){
 	int i;
 	for(i = 0; i < MAX; i++){
+		printf("%d ", A[i]);
+	}
+	printf("\n");
+	for(i = 0; i < MAX; i++){
 		if(A[i] == 1){
 			printf("%d ", i);
 		}
 	}
 }
 
+void insert(SET s, int idx){
+	if(idx < MAX){
+		s[idx] = 1;
+	}
+}
+
+void populateA(SET s){
+	int A[6] = {1,2,4,7,8,9};
+	int i;
+	for(i = 0; i < 6; i++){
+		insert(s, A[i]);
+	}
+}
+
+void populateB(SET s){
+	int B[4] = {7,3,1,0};
+	int i;
+	for(i = 0; i < 4; i++){
+		insert(s, B[i]);
+	}
+}
+
 int main(){
-	SET A = {0,1,0,1,1};
-	SET B = {1,1,0,1,0,0,0,1};
+	SET A;
+	SET B;
+	// initialize set
+	initSet(A);
+	initSet(B);
+	// populate set
+	populateA(A);
+	populateB(B);
+	// union
 	SET *C = Union(A,B);
+	// intersection
 	SET *D = Intersection(A,B);
+	// difference (complement)
 	SET *E = Difference(A,B);
 	
 	printf("SET A:\n");

@@ -8,10 +8,8 @@ codes for DSA, from pre-mid to finals
 
 1)  Abstract Data Type (ADT)
 2)  ADT List 
-3)  
-     a) List Operations:  Initialize, insert, delete, member, locate, and other operations 
      
-     b) Implementations of ADT List:
+     a) Implementations of ADT List:
      
         i) Array Implementation (4 versions)
         
@@ -27,7 +25,7 @@ codes for DSA, from pre-mid to finals
         
        iii) Cursor-based Implementation
        
-      c) Time Complexity of the List operations in different implementations : O(1), O(N), and O(N*N)
+      b) Time Complexity of the List operations in different implementations : O(1), O(N), and O(N*N)
 3) ADT Stack and Implementations
     a) Stack Operations:  Top, Pop, Push, and other utility functions such as initStack, isEmpty, and isFull 
     b) Implementations 

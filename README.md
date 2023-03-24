@@ -7,8 +7,7 @@ codes for DSA, from pre-mid to finals
 ### Pre-midterm Topics
 
 1)  Abstract Data Type (ADT)
-2)  ADT List 
-     
+2)  ADT List  return
      a) Implementations of ADT List:
         i) Array Implementation (4 versions)  
            Version 1: List is a structure containing an array and variable count

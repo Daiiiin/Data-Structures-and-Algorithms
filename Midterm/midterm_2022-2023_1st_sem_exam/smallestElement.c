@@ -16,31 +16,22 @@
 typedef unsigned long int setCompWord;
 
 int smallestElem(setCompWord set){
-	int retVal = -1, bit, gap;
+	int retVal = -1, bit;
 	unsigned int mask;
 
 	bit = (sizeof(set) << 3) - 1;
 
-	for(gap = 1, mask = 1<<bit; mask != 0; mask >>= 1, gap++){
+	for(mask = 1<<bit; mask != 0; mask >>= 1){
 		if(set & mask){
 			retVal = set & mask;			
 		}
 	}
 
-//	for(gap = 1, mask = 1<<bit; mask != 0; mask >>= 1, gap++){
-//		printf("%d", (set & mask)? 1 : 0);
-//		if(gap % 4 == 0){
-//			printf(" ");
-//		}
-//		if(set & mask){
-//			retVal = set & mask;			
-//		}
-//	}
 	return retVal;
 }
 
 int main(){
-	setCompWord A = 24;
+	setCompWord A = -59;
 	
 	printf("Set: %d\n\n", A);
 	printf("Size of set: %d bits", (sizeof(A) << 3));

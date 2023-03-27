@@ -90,9 +90,9 @@ void populateSet(cursorSet *A);	// DONE
 
 //---Problem #3 ---
 int openHash(char *IDen);	// DONE
-openDic initOpenDict(VHeap *VH);
-openDic convertToOpenDict(cursorSet *A);
-void displayOpenDict(openDic D);
+openDic initOpenDict(VHeap *VH);	// DONE
+openDic convertToOpenDict(cursorSet *A);	// DONE
+void displayOpenDict(openDic D);	// DONE
 
 //---Problem #4 ---
 void freeInVHeap(VHeap *VH, int ndx);
@@ -155,10 +155,11 @@ void displayCloseDict(closeDic CD);
  	printf("\n------------");
 	//Declare variables needed for Problem #3
  	openDic OD;
-	
- 	//Function Calls for Problem #3
 
-//	displayOpenDict(OD);
+ 	//Function Calls for Problem #3
+ 	OD = convertToOpenDict(&CS);
+	displaySet(CS);
+	displayOpenDict(OD);
 
 /*---------------------------------------------------------------------------------
  * 	Problem #4 ::  1) Perform 3 delete operations on the Open Hash Dictionary     *
@@ -234,7 +235,7 @@ void displayVHeap(VHeap V)
 		if(V.VH_node[i].elem.prodID == " "){
 			printf("%10s", V.VH_node[i].elem.prodID);
 		}
-		printf("%15d", V.VH_node[i].next);
+		printf("%20d", V.VH_node[i].next);
 	}
 
 	printf("\n\n"); system("Pause");
@@ -357,6 +358,12 @@ openDic initOpenDict(VHeap *VH)
 }
 
 //typedef struct {
+//   int elemIndex;        // index of the 1st element in the set  
+//   int count;            // holds the actual number of elements in the set  
+//   VHeap *VHptr;         // holds the pointer to the virtual heap  
+//}cursorSet;   
+
+//typedef struct {
 //	int header[OPEN_DSIZE];  // array of sets   
 //	int count;               // total number of elements in the dictionary  
 //	VHeap *dicVHptr;         // holds the pointer to the virtual heap  
@@ -364,23 +371,29 @@ openDic initOpenDict(VHeap *VH)
 
 openDic convertToOpenDict(cursorSet *A)
 {
-	int *trav;
+	int *trav, temp;
 	int key, *dtrav;
 	openDic	retVal = initOpenDict(A->VHptr);
-	for(trav = &A->elemIndex; *trav != -1; trav = &A->VHptr->VH_node[*trav].next){
-		key = openHash(A->VHptr->VH_node[*trav].elem.prodID);
-		for(dtrav = &retVal.header[key]; *trav != -1  && (retVal.dicVHptr->VH_node[*dtrav].elem.prodID, A->VHptr->VH_node[*trav].elem.prodID) < 0; trav = &retVal.dicVHptr->VH_node[*dtrav].next){}
-		
+	for(trav = &A->elemIndex; *trav != -1;){
+		if(*trav != -1){
+			key = openHash(A->VHptr->VH_node[*trav].elem.prodID);
+			for(dtrav = &retVal.header[key]; *dtrav != -1 && (retVal.dicVHptr->VH_node[*dtrav].elem.prodID, A->VHptr->VH_node[*trav].elem.prodID) > 0; dtrav = &retVal.dicVHptr->VH_node[*dtrav].next){}
+			temp = *trav;
+			*trav = A->VHptr->VH_node[temp].next;
+			retVal.dicVHptr->VH_node[temp].next = *dtrav;
+			*dtrav = temp;
+			retVal.count++;
+			A->count--;
+		}
 	}
-
+	return retVal;
 }
-
 
 
 void displayOpenDict(openDic D)
 {
 	//Variable declaration here 
-	int i;
+	int i, j;
 	
 	printf("\n\nDetails of the Open Hash Dictionary:: ");
 	printf("\n-------------------------------------");
@@ -393,7 +406,9 @@ void displayOpenDict(openDic D)
 	//Write your code here
 	for(i = 0; i < OPEN_DSIZE; i++){
 		printf("\nGroup[%d] :: ", i);
-//		printf("%15s","ID Numbers");
+		for(j = D.header[i]; j != -1; j = D.dicVHptr->VH_node[j].next){
+			printf("%-7s", D.dicVHptr->VH_node[j].elem.prodID);	
+		}
 	}
 	
 
@@ -454,4 +469,3 @@ void displayCloseDict(closeDic CD)
 	printf("\n\n"); system("Pause");
  
 }
- 

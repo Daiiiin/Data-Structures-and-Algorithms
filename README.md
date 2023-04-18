@@ -1,4 +1,4 @@
-# Data-Structures-and-Algorithms
+# Data Structures and Algorithms
 
 Codes for DSA, from pre-mid to finals
 

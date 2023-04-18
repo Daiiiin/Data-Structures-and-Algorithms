@@ -10,6 +10,25 @@ typedef struct cell{
 
 typedef enum {TRUE, FALSE} boolean;
 
+/*
+	Visual Representation of tree
+				20
+			  /   \
+			15     34
+		   /  \   /  \
+		  7   16 21   38
+	 	/  \       \
+	   5   13       30
+*/
+
+/* 
+	/_ preorder
+
+	_\ postorder
+
+	/\_ inorder
+*/
+
 void initBST(BST *S){
 	*S = NULL;
 }

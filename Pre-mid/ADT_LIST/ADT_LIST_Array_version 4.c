@@ -3,8 +3,7 @@
 #define MAX 10
 
 // HELLO
-
-// kapoya
+// I need practice
 
 typedef struct node{
 	int *elemPtr;

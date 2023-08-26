@@ -4,6 +4,8 @@
 
 // HELLO
 
+// kapoya
+
 typedef struct node{
 	int *elemPtr;
 	int count;

@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #define MAX 10
 
+// HELLO
+
 typedef struct node{
 	int *elemPtr;
 	int count;

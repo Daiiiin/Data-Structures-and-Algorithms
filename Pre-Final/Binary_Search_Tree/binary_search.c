@@ -8,6 +8,8 @@ typedef struct{
 
 /* 
 	NOTE: LIST must be sorted in ascending order
+
+	I PASSED DSA, LETS GO!!!
 */
 
 void initList(LIST *L){

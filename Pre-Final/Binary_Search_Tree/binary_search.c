@@ -9,7 +9,7 @@ typedef struct{
 /* 
 	NOTE: LIST must be sorted in ascending order
 
-	I PASSED DSA, LETS GO!!!
+	MAYTA D NA KO MA HAGBUNG
 */
 
 void initList(LIST *L){
